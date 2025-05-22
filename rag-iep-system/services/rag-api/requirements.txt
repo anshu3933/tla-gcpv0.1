@@ -1,0 +1,19 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+google-cloud-storage==2.10.0
+google-cloud-firestore==2.13.1
+google-cloud-secret-manager==2.16.4
+google-cloud-aiplatform==1.38.1
+vertexai==0.0.1
+firebase-admin==6.2.0
+structlog==23.2.0
+pydantic==2.5.2
+
+# OpenTelemetry dependencies
+opentelemetry-api==1.21.0
+opentelemetry-sdk==1.21.0
+opentelemetry-exporter-cloud-trace==1.21.0
+opentelemetry-instrumentation-fastapi==0.42b0
+opentelemetry-instrumentation-requests==0.42b0
+opentelemetry-instrumentation-google-cloud==0.42b0
+opentelemetry-instrumentation-vertexai==0.1.0
