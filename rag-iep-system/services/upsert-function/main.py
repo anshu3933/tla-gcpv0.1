@@ -1,8 +1,12 @@
+import os
 import base64
 import json
 import functions_framework
 from google.cloud import aiplatform
 
+PROJECT_ID = os.environ["PROJECT_ID"]
+LOCATION = os.environ.get("LOCATION", "us-central1")
+INDEX_ID = os.environ["INDEX_ID"]
 PROJECT_ID = "${PROJECT_ID}"
 LOCATION = "us-central1"
 INDEX_ID = "${INDEX_ID}"

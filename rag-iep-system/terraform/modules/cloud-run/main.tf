@@ -1,3 +1,7 @@
+variable "project_id" {}
+variable "region" {}
+variable "security_policy" {}
+
 resource "google_cloud_run_service" "rag_api" {
   name     = "rag-api"
   location = var.region
@@ -24,11 +28,12 @@ resource "google_cloud_run_service" "rag_api" {
     }
     
     metadata {
-      annotations = {
-        "autoscaling.knative.dev/minScale" = "1"
-        "autoscaling.knative.dev/maxScale" = "10"
-        "run.googleapis.com/cpu-boost"      = "true"
-      }
+        annotations = {
+            "autoscaling.knative.dev/minScale" = "1"
+            "autoscaling.knative.dev/maxScale" = "10"
+            "run.googleapis.com/cpu-boost"      = "true"
+            "run.googleapis.com/security-policy" = var.security_policy
+        }
     }
   }
   

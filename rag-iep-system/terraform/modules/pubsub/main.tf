@@ -13,6 +13,24 @@ resource "google_pubsub_topic" "parsed_chunks" {
   project = var.project_id
 }
 
+resource "google_pubsub_subscription" "embedder_pull" {
+  name    = "embedder-sub"
+  topic   = google_pubsub_topic.parsed_chunks.name
+  project = var.project_id
+
+  ack_deadline_seconds = 300
+
+  dead_letter_policy {
+    dead_letter_topic     = google_pubsub_topic.embedder_dlq.id
+    max_delivery_attempts = 5
+  }
+}
+
+resource "google_pubsub_topic" "embedder_dlq" {
+  name    = "embedder-dlq"
+  project = var.project_id
+}
+
 # Subscription for doc-parser
 resource "google_pubsub_subscription" "doc_parser_push" {
   name    = "doc-parser-push-sub"
