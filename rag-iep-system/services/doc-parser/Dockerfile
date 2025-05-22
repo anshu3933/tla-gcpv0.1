@@ -1,10 +1,9 @@
-FROM gcr.io/google-appengine/python:latest
+FROM python:3.11-slim
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libmagic1 \
     poppler-utils \
-    ghostscript \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

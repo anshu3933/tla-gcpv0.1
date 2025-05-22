@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Build artifacts
+rag-iep-system/services/upsert-function.zip
+

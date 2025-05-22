@@ -8,10 +8,6 @@ resource "google_vertex_ai_index" "rag_index" {
   description  = "Index for RAG document chunks"
   
   metadata {
-    # This is for initial data load only
-    # Subsequent updates will be handled by the scheduled upsert script
-    contents_delta_uri = "gs://${var.project_id}-vector-upserts/initial"
-    
     config {
       dimensions                  = 768  # For textembedding-004
       approximate_neighbors_count = 100
@@ -36,8 +32,6 @@ resource "google_vertex_ai_index_endpoint" "rag_endpoint" {
   display_name = "rag-index-endpoint"
   description  = "Endpoint for RAG vector search"
   region       = var.location
-  
-  network = "projects/${var.project_id}/global/networks/default"
 }
 
 # Deploy index to endpoint
