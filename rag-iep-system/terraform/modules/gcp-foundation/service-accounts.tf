@@ -42,20 +42,30 @@ locals {
     "rag-parser-sa" = {
       display_name = "Document Parser Service Account"
       description  = "Service account for document parsing service"
-      # Note: Specific storage and pubsub permissions will be granted in their respective modules
-      roles = []
+      roles = [
+        "roles/pubsub.publisher",
+        "roles/storage.objectViewer",
+        "roles/storage.objectCreator"
+      ]
     }
     "rag-embedder-sa" = {
       display_name = "Embedder Service Account"
       description  = "Service account for vector embedding service"
-      # Note: Specific permissions for Vertex AI, storage, and pubsub will be granted in their respective modules
-      roles = []
+      roles = [
+        "roles/storage.objectViewer",
+        "roles/storage.objectAdmin",
+        "roles/aiplatform.user"
+      ]
     }
     "rag-api-sa" = {
       display_name = "RAG API Service Account"
       description  = "Service account for RAG API service"
-      # Note: Specific permissions for Vertex AI, Firestore, Storage, and Secret Manager will be granted in their respective modules
-      roles = []
+      roles = [
+        "roles/aiplatform.user",
+        "roles/firestore.user",
+        "roles/storage.objectViewer",
+        "roles/secretmanager.secretAccessor"
+      ]
     }
   }
 }
