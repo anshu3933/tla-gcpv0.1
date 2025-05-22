@@ -301,6 +301,7 @@ async def query_rag(request: QueryRequest, user=Depends(verify_token)):
                     # Log token usage for cost tracking
                     estimated_tokens = (len(prompt) + len(full_response)) // 4
                     cost_micro_usd = int(estimated_tokens * 7)
+                    cost_micro_usd = estimated_tokens * 0.000007
 
                     gen_span.set_attribute("estimated_tokens", estimated_tokens)
                     gen_span.set_attribute("cost_micro_usd", cost_micro_usd)

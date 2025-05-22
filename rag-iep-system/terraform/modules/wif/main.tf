@@ -20,6 +20,7 @@ resource "google_iam_workload_identity_pool_provider" "github" {
   project = var.project_id
 
   attribute_condition = "assertion.repository_owner=='${var.github_owner}'"
+  attribute_condition = "assertion.repository_owner=='example'"
   attribute_mapping = {
     "google.subject" = "assertion.sub"
   }
